@@ -12,7 +12,7 @@ module "demo-dev" {
   cname_prefix = "demo-dev"
 
   bundle = "data/LatestVersion.zip"
-  bucket = "bucket_name"
+  bucket = "demo_beanstalk_bucket_name"
   version_label = "LatestVersion"
 
   keypair = "keypair"
