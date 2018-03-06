@@ -138,7 +138,7 @@ variable "autoscale_max" {
 //  default = "22"
 //  description = "SSH port"
 //}
-//
+
 //variable "ssh_listener_enabled" {
 //  default = "false"
 //  description = "Enable ssh port"
@@ -154,10 +154,10 @@ variable "healthcheck_url" {
   description = "Application Health Check URL. Elastic Beanstalk will call this URL to check the health of the application running on EC2 instances"
 }
 
-//variable "loadbalancer_certificate_arn" {
-//  default = ""
-//  description = "Load Balancer SSL certificate ARN. The certificate must be present in AWS Certificate Manager"
-//}
+variable "loadbalancer_certificate_arn" {
+  default = ""
+  description = "Load Balancer SSL certificate ARN. The certificate must be present in AWS Certificate Manager"
+}
 
 //variable "config_source" {
 //  default = ""
