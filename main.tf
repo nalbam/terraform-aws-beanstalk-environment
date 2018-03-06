@@ -24,7 +24,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
 
   cname_prefix = "${var.cname_prefix}"
 
-  version_label = "${var.version_label}"
+  version_label = "${aws_elastic_beanstalk_application_version.default.name}"
 
   tier = "${var.tier}"
 
