@@ -1,5 +1,18 @@
 # Elastic Beanstalk
 
+resource "aws_s3_bucket_object" "default" {
+  source = "${var.bundle}"
+  bucket = "${var.bucket}"
+  key = "${var.name}/${var.stage}/${var.bundle}"
+}
+
+resource "aws_elastic_beanstalk_application_version" "default" {
+  name = "${var.version_label}"
+  application = "${var.name}"
+  bucket = "${aws_s3_bucket_object.default.bucket}"
+  key = "${aws_s3_bucket_object.default.key}"
+}
+
 #
 # Full list of options:
 # http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-elasticbeanstalkmanagedactionsplatformupdate

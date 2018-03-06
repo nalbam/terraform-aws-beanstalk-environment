@@ -1,7 +1,9 @@
 keypair = "sample"
 solution_stack_name = "sample"
 
-version_label = "sample"
+bundle = "sample.zip"
+bucket = "sample_bucket"
+version_label = "sample-dev"
 
 vpc_id = "sample"
 public_subnet_ids = []

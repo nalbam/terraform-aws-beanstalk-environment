@@ -4,7 +4,7 @@ variable region {
 
 variable "name" {
   default = "demo"
-  description = "Solution name, e.g. 'app' or 'demo'"
+  description = "A unique name for this Environment."
 }
 
 variable "stage" {
@@ -27,9 +27,19 @@ variable "solution_stack_name" {
   description = "Elastic Beanstalk stack, e.g. Docker, Go, Node, Java, IIS. [Read more](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)"
 }
 
+variable "bundle" {
+  //default = ""
+  description = "The path to the source file being uploaded to the bucket."
+}
+
+variable "bucket" {
+  //default = ""
+  description = "The name of the bucket to put the file in."
+}
+
 variable "version_label" {
   //default = "LatestVersion"
-  description = "Version label"
+  description = "The name of the Elastic Beanstalk Application Version to use in deployment."
 }
 
 variable "wait_for_ready_timeout" {
