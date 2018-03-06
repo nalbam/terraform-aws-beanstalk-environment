@@ -158,26 +158,26 @@ resource "aws_elastic_beanstalk_environment" "default" {
     value = "true"
   }
 
-  //  setting {
-  //    namespace = "aws:elb:listener:443"
-  //    name = "ListenerProtocol"
-  //    value = "HTTPS"
-  //  }
-  //  setting {
-  //    namespace = "aws:elb:listener:443"
-  //    name = "InstancePort"
-  //    value = "80"
-  //  }
-  //  setting {
-  //    namespace = "aws:elb:listener:443"
-  //    name = "SSLCertificateId"
-  //    value = "${var.loadbalancer_certificate_arn}"
-  //  }
-  //  setting {
-  //    namespace = "aws:elb:listener:443"
-  //    name = "ListenerEnabled"
-  //    value = "${var.loadbalancer_certificate_arn != "" ? "true" : "false"}"
-  //  }
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "ListenerProtocol"
+    value = "HTTPS"
+  }
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "InstancePort"
+    value = "80"
+  }
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "SSLCertificateId"
+    value = "${var.loadbalancer_certificate_arn}"
+  }
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "ListenerEnabled"
+    value = "${var.loadbalancer_certificate_arn != "" ? "true" : "false"}"
+  }
 
   //  setting {
   //    namespace = "aws:elb:listener:${var.ssh_listener_port}"
