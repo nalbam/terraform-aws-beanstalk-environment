@@ -155,7 +155,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:elb:listener:80"
     name = "ListenerEnabled"
-    value = "true"
+    value = "${var.http_listener_enabled}"
   }
 
   setting {
@@ -171,12 +171,12 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:elb:listener:443"
     name = "SSLCertificateId"
-    value = "${var.loadbalancer_certificate_arn}"
+    value = "${var.ssl_certificate_arn}"
   }
   setting {
     namespace = "aws:elb:listener:443"
     name = "ListenerEnabled"
-    value = "${var.loadbalancer_certificate_arn != "" ? "true" : "false"}"
+    value = "${var.ssl_certificate_arn != "" ? "true" : "false"}"
   }
 
   //  setting {
@@ -219,6 +219,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
     name = "LoadBalancerType"
     value = "${var.loadbalancer_type}"
   }
+
   setting {
     namespace = "aws:elasticbeanstalk:environment"
     name = "ServiceRole"

@@ -129,10 +129,15 @@ variable "autoscale_max" {
   description = "Maximum instances in charge"
 }
 
-//variable "http_listener_enabled" {
-//  default = "true"
-//  description = "Enable port 80 (http)"
-//}
+variable "http_listener_enabled" {
+  default = "true"
+  description = "Enable port 80 (http)"
+}
+
+variable "ssl_certificate_arn" {
+  default = ""
+  description = "Load Balancer SSL certificate ARN. The certificate must be present in AWS Certificate Manager"
+}
 
 //variable "ssh_listener_port" {
 //  default = "22"
@@ -152,11 +157,6 @@ variable "loadbalancer_type" {
 variable "healthcheck_url" {
   default = ""
   description = "Application Health Check URL. Elastic Beanstalk will call this URL to check the health of the application running on EC2 instances"
-}
-
-variable "loadbalancer_certificate_arn" {
-  default = ""
-  description = "Load Balancer SSL certificate ARN. The certificate must be present in AWS Certificate Manager"
 }
 
 //variable "config_source" {
