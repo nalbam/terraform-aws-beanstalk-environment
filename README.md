@@ -3,7 +3,7 @@
 ## usage
 ```
 module "demo-dev" {
-  source = "git::https://gitlab.com/nalbam/terraform-aws-beanstalk-environment.git"
+  source = "git::https://github.com/nalbam/terraform-aws-beanstalk-environment.git"
   region = "ap-northeast-2"
 
   name = "demo"
