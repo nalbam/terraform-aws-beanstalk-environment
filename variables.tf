@@ -1,24 +1,24 @@
-variable region {
+variable "region" {
   default = "us-east-1"
 }
 
 variable "name" {
-  default = "demo"
+  default     = "demo"
   description = "A unique name for this Environment."
 }
 
 variable "stage" {
-  default = "dev"
+  default     = "dev"
   description = "Stage, e.g. 'prod', 'dev', 'stage', or 'test'"
 }
 
 variable "cname_prefix" {
-  default = ""
+  default     = ""
   description = "Prefix to use for the fully qualified DNS name of the Environment."
 }
 
 variable "tier" {
-  default = "WebServer"
+  default     = "WebServer"
   description = "Elastic Beanstalk Environment tier, e.g. ('WebServer', 'Worker')"
 }
 
@@ -52,65 +52,68 @@ variable "vpc_id" {
 }
 
 variable "associate_public_ip_address" {
-  default = "true"
+  default     = "true"
   description = "Specifies whether to launch instances in your VPC with public IP addresses."
 }
 
 variable "public_subnet_ids" {
-  type = "list"
+  type = list(string)
+
   //default = []
   description = "List of public subnets to place Elastic Load Balancer"
 }
 
 variable "private_subnet_ids" {
-  type = "list"
+  type = list(string)
+
   //default = []
   description = "List of private subnets to place EC2 instances"
 }
 
 variable "updating_min_in_service" {
-  default = "1"
+  default     = "1"
   description = "Minimum count of instances up during update"
 }
 
 variable "updating_max_batch" {
-  default = "1"
+  default     = "1"
   description = "Maximum count of instances up during update"
 }
 
 variable "autoscale_trigger" {
-  default = "NetworkOut"
+  default     = "NetworkOut"
   description = "The measure name associated with the metric the trigger uses. (CPUUtilization, NetworkOut)"
 }
 
 variable "autoscale_statistic" {
-  default = "Average"
+  default     = "Average"
   description = "The statistic that the trigger uses when fetching metrics statistics to examine."
 }
 
 variable "autoscale_unit" {
-  default = "Percent"
+  default     = "Percent"
   description = "The standard unit that the trigger uses when fetching metric statistics to examine. (Percent, Bytes)"
 }
 
 variable "autoscale_lower_bound" {
-  default = "2000000"
+  default     = "2000000"
   description = "Minimum level of autoscale metric to add instance"
 }
 
 variable "autoscale_upper_bound" {
-  default = "6000000"
+  default     = "6000000"
   description = "Maximum level of autoscale metric to remove instance"
 }
 
 variable "security_group_ids" {
-  type = "list"
+  type = list(string)
+
   //default = []
   description = "List of security groups"
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  default     = "t2.micro"
   description = "Instances type"
 }
 
@@ -130,22 +133,22 @@ variable "keypair" {
 }
 
 variable "autoscale_min" {
-  default = "1"
+  default     = "1"
   description = "Minumum instances in charge"
 }
 
 variable "autoscale_max" {
-  default = "4"
+  default     = "4"
   description = "Maximum instances in charge"
 }
 
 variable "http_listener_enabled" {
-  default = "true"
+  default     = "true"
   description = "Enable port 80 (http)"
 }
 
 variable "ssl_certificate_arn" {
-  default = ""
+  default     = ""
   description = "Load Balancer SSL certificate ARN. The certificate must be present in AWS Certificate Manager"
 }
 
@@ -160,12 +163,12 @@ variable "ssl_certificate_arn" {
 //}
 
 variable "loadbalancer_type" {
-  default = "classic"
+  default     = "classic"
   description = "Load Balancer type, e.g. 'application' or 'classic'"
 }
 
 variable "healthcheck_url" {
-  default = ""
+  default     = ""
   description = "Application Health Check URL. Elastic Beanstalk will call this URL to check the health of the application running on EC2 instances"
 }
 
@@ -175,22 +178,22 @@ variable "healthcheck_url" {
 //}
 
 variable "notification_protocol" {
-  default = "email"
+  default     = "email"
   description = "Notification protocol"
 }
 
 variable "notification_endpoint" {
-  default = ""
+  default     = ""
   description = "Notification endpoint"
 }
 
 variable "notification_topic_arn" {
-  default = ""
+  default     = ""
   description = "Notification topic arn"
 }
 
 variable "notification_topic_name" {
-  default = ""
+  default     = ""
   description = "Notification topic name"
 }
 
@@ -200,17 +203,17 @@ variable "iam_role_ec2_id" {
 }
 
 variable "env_vars" {
-  type = "map"
-  default = {}
+  type        = map(string)
+  default     = {}
   description = "Map of custom ENV variables to be provided to the Jenkins application running on Elastic Beanstalk, e.g. `env_vars = { JENKINS_USER = 'admin' JENKINS_PASS = 'xxxxxx' }`"
 }
 
 variable "env_default_key" {
-  default = "DEFAULT_ENV_%d"
+  default     = "DEFAULT_ENV_%d"
   description = "Default ENV variable key for Elastic Beanstalk `aws:elasticbeanstalk:application:environment` setting"
 }
 
 variable "env_default_value" {
-  default = "EMPTY"
+  default     = "EMPTY"
   description = "Default ENV variable value for Elastic Beanstalk `aws:elasticbeanstalk:application:environment` setting"
 }
