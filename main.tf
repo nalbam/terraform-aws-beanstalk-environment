@@ -1,13 +1,5 @@
 # Elastic Beanstalk
 
-terraform {
-  required_version = ">= 0.12"
-}
-
-provider "aws" {
-  region = var.region
-}
-
 resource "aws_s3_bucket_object" "default" {
   source = var.bundle
   bucket = var.bucket
